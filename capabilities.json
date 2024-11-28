@@ -1,0 +1,224 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Field",
+            "name": "category",
+            "kind": "Grouping"
+        }
+    ],
+    "objects": {
+        "general": {
+            "displayName": "General",
+            "displayNameKey": "formattingGeneral",
+            "properties": {
+                "filter": {
+                    "type": {
+                        "filter": true
+                    }
+                }
+            }
+        },
+        "dialogSize": {
+            "properties": {
+                "width": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "height": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "dialogText": {
+            "properties": {
+                "fontSize": { 
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "fontFamily": {
+                    "type": {
+                        "formatting": {
+                            "fontFamily": true
+                        }
+                    }
+                },
+                "fontBold": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontUnderline": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontItalic": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "dialogBackgroundColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "valueText": {
+            "properties": {
+                "fontSize": { 
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "fontFamily": {
+                    "type": {
+                        "formatting": {
+                            "fontFamily": true
+                        }
+                    }
+                },
+                "fontBold": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontUnderline": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontItalic": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "valueBackgroundColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "slicerHeader": {
+            "properties": {
+                "titleText": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "fontSize": { 
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "fontFamily": {
+                    "type": {
+                        "formatting": {
+                            "fontFamily": true
+                        }
+                    }
+                },
+                "fontBold": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontUnderline": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontItalic": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fontColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fontBackground": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "slicerSettings": {
+            "properties": {
+                "isDefaultSelected": {
+                    "type": {
+                        "bool": true
+                    }
+                  }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "category": {
+                        "max": 1
+                    }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "category"
+                    }
+                }
+            }
+        }
+    ],
+    "supportsHighlight": true,
+    "privileges": [],
+    "supportsMultiVisualSelection": true
+}
