@@ -1,6 +1,6 @@
 {
-  "name": "visual",
-  "description": "default_template_value",
+  "name": "auto-select-slicer",
+  "description": "A simple slicer that automatically selects the first available option when no option is selected or when the previously selected option becomes unavailable due to cross-filtering",
   "version": "1.0.0.0",
   "repository": {
     "type": "default_template_value",

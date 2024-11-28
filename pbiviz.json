@@ -1,13 +1,13 @@
 {
     "visual": {
-        "name": "customSlicer",
-        "displayName": "Custom Slicer",
-        "guid": "customSlicer21B4538EA7724FE6A3ADE31468782176",
+        "name": "autoSelectSlicer",
+        "displayName": "Auto Select Slicer",
+        "guid": "autoSelectSlicer2F5188A4A217D44EBBADA7CFCC57AD8CF",
         "visualClassName": "Visual",
         "version": "1.0.0.0",
-        "description": "custom slicer",
-        "supportUrl": "https://community.powerbi.com",
-        "gitHubUrl": "https://github.com/microsoft/PowerBI-visuals-circlecard"
+        "description": "A simple slicer that automatically selects the first available option when no option is selected or when the previously selected option becomes unavailable due to cross-filtering",
+        "supportUrl": "https://github.com/longcspherasolutions/PowerBI-visuals-auto-select-slicer#powerbi-visuals-auto-select-slicer",
+        "gitHubUrl": "https://github.com/longcspherasolutions/PowerBI-visuals-auto-select-slicer"
     },
     "apiVersion": "5.3.0",
     "author": {
