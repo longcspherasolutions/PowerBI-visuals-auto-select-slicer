@@ -4,7 +4,7 @@ The **Auto Select Slicer** is a straightforward Power BI visual that filters dat
 
 # Support
 
-Customers can contact our technical support by navigating to this [link](https://scn.spherasolutions.com/client/login.aspx) and clicking on the ***Contact Us*** button.
+For further support, please reach out to our developer via email at LOng_c@spherasolutions.com.
 
 # Privacy
 
