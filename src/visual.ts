@@ -156,6 +156,7 @@ export class Visual implements IVisual {
             this.dialogState.data = this.data.values;
             this.dialogState.formatValues = formattingValues;
             this.dialogState.isDefaultSelected = formattingValues.isDefaultSelected;
+            this.dialogState.selectedItems = (options.jsonFilters?.at(0) as IBasicFilter)?.values ?? [];
             this.validateSelectedItems();
 
             DialogSlicer.update({
