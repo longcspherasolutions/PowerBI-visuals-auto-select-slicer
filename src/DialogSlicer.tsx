@@ -88,14 +88,21 @@ export default class DialogSlicer extends React.Component<DialogSlicerProps, Dia
         }}>{this.state.titleText}</h3>
         <div className="input-container" onClick={this.props.onDialogOpen}>
           <p className="selected-text" style={{
-          fontFamily:this.state.fontValueFamily, 
-          fontSize: `${this.state.fontValueSize}pt`, 
-          fontStyle: (this.state.isValueItalic) ? 'italic' : 'normal', 
-          fontWeight: (this.state.isValueBold) ? 'bold' : 'normal', 
-          textDecorationLine: (this.state.isValueUnderline) ? 'underline' : 'none', 
-          color: this.state.fontValueColor, 
-          backgroundColor: this.state.backgroundValueColor
-        }}>{this.state.selectedItems.length > 1 ? 'Multiple selections' : (this.state.selectedItems.length === 1 && this.state.selectedItems[0].toString())}</p>
+            fontFamily:this.state.fontValueFamily, 
+            fontSize: `${this.state.fontValueSize}pt`, 
+            fontStyle: (this.state.isValueItalic) ? 'italic' : 'normal', 
+            fontWeight: (this.state.isValueBold) ? 'bold' : 'normal', 
+            textDecorationLine: (this.state.isValueUnderline) ? 'underline' : 'none', 
+            color: this.state.fontValueColor, 
+            backgroundColor: this.state.backgroundValueColor
+          }}>
+            {
+              this.state.selectedItems.length > 1
+                ? 'Multiple selections'
+                : (this.state.selectedItems.length === 1
+                  && (this.state.selectedItems[0]?.toString() ?? "(Blank)"))
+            }
+          </p>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             {
               this.state.isOpen

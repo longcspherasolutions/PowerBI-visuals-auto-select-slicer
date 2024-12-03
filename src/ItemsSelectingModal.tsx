@@ -53,18 +53,25 @@ function ItemsSelectingModal({ data, selectedItems, maxSelection, isDefaultSelec
       backgroundColor: formatValues.backgroundDialogColor
     }}>
       <div className="list">
-        {data.map((option, index) => <div key={option.toString()} className="list-item">
-          <input {...inputProps} checked={selectedOptions.includes(option)} onChange={handleInputChange(index)} />
-          <span className='list-item-text'
-            style={{
-              fontFamily: formatValues.fontDialogFamily, 
-              fontSize: `${formatValues.fontDialogSize}pt`, 
-              fontStyle: (formatValues.isDialogItalic) ? 'italic' : 'normal', 
-              fontWeight: (formatValues.isDialogBold) ? 'bold' : 'normal', 
-              textDecorationLine: (formatValues.isDialogUnderline) ? 'underline' : 'none', 
-              color: formatValues.fontDialogColor
-            }}>{option.toString()}</span>
-        </div>)}
+        {data.map((option, index) => {
+          const value = option?.toString() ?? "(Blank)";
+          return (
+            <div key={value} className="list-item">
+              <input {...inputProps} checked={selectedOptions.includes(option)} onChange={handleInputChange(index)} />
+              <span className='list-item-text'
+                style={{
+                  fontFamily: formatValues.fontDialogFamily, 
+                  fontSize: `${formatValues.fontDialogSize}pt`, 
+                  fontStyle: (formatValues.isDialogItalic) ? 'italic' : 'normal', 
+                  fontWeight: (formatValues.isDialogBold) ? 'bold' : 'normal', 
+                  textDecorationLine: (formatValues.isDialogUnderline) ? 'underline' : 'none', 
+                  color: formatValues.fontDialogColor
+                }}>
+                  {value}
+                </span>
+            </div>
+          )
+        })}
       </div>
     </div>
   );
