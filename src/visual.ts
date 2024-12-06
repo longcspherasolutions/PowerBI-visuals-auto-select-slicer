@@ -36,6 +36,9 @@ export class Visual implements IVisual {
     private dialogTitle: string;
     //--------------------
 
+    /**
+     * Trigger Power BI filter API
+     */
     private handleFilter() {
         this.basicFilter = {
             $schema: "https://powerbi.com/product/schema#basic",
@@ -56,10 +59,14 @@ export class Visual implements IVisual {
         }
         // reference: https://learn.microsoft.com/en-us/power-bi/developer/visuals/filter-api
     }
+
+    /**
+     * Update selected items and trigger filter API
+     * @param selectedItems List of selected items
+     */
     private handleSelect = (selectedItems: PrimitiveValue[]) => {
         this.dialogState.selectedItems = selectedItems
         this.handleFilter()
-
     };
 
     private handleDialogOpen = () => {
@@ -82,16 +89,19 @@ export class Visual implements IVisual {
         this.host.openModalDialog(ItemsSelectingDialog.id, dialogOptions, this.dialogState)
             .then((result) => {
                 if (result.actionId === DialogAction.OK) {
+                    // filter report if user click OK
                     this.handleSelect((result.resultState as ItemsSelectingDialogResult).selectedItems);
                 }
             })
             .catch(console.error)
             .finally(() => {
+                // sync slicer UI when popup dialog is closed
                 DialogSlicer.update({
                     isOpen: false,
                 });
             });
-        
+
+        // sync slicer UI when popup dialog is opened
         DialogSlicer.update({
             isOpen: true,
         });
@@ -145,20 +155,33 @@ export class Visual implements IVisual {
         ReactDOM.render(this.reactRoot, this.target);
     }
 
+    /**
+     * Trigger by Power BI on load or update
+     */
     public update(options: VisualUpdateOptions) {
         if ((options.dataViews && options.dataViews[0])) {
+            // get settings values
             this.formattingSettings = this.formattingSettingsService.populateFormattingSettingsModel(VisualSettingsModel,
                 options.dataViews[0]);
+
+            // get list of options to display
             this.data = transformData(options);
+
+            // get format values from Format Panel UI
             const formattingValues = getFormattingValues(this.formattingSettings);
+
             const title = (formattingValues.titleText == "") ? this.data.column : formattingValues.titleText
             this.dialogTitle = title
             this.dialogState.data = this.data.values;
             this.dialogState.formatValues = formattingValues;
             this.dialogState.isDefaultSelected = formattingValues.isDefaultSelected;
             this.dialogState.selectedItems = (options.jsonFilters?.at(0) as IBasicFilter)?.values ?? [];
+
+            // check selected items is valid
+            // update selected items and re-filter report if selected items are not valid
             this.validateSelectedItems();
 
+            // update UI for slicer
             DialogSlicer.update({
                 maxSelection: this.dialogState.maxSelection,
                 selectedItems: this.dialogState.selectedItems,
@@ -184,6 +207,9 @@ export class Visual implements IVisual {
         }
     }
 
+    /**
+     * Validate selected items, update selected items and re-filter report if selected items is invalid
+     */
     private validateSelectedItems() {
         let selectedItems = this.dialogState.selectedItems;
 

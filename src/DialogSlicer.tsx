@@ -50,9 +50,15 @@ export const initialState: DialogSlicerState = {
   isValueUnderline: defaultFormattingValues.defaultIsUnderline
 }
 
+/**
+ * Main UI component for slicer
+ */
 export default class DialogSlicer extends React.Component<DialogSlicerProps, DialogSlicerState> {
   private static updateCallback: ((newState: Partial<DialogSlicerState>) => void) | null = null;
 
+  /**
+   * static function to update component state from out side component
+   */
   public static update(newState: Partial<DialogSlicerState>) {
     if (typeof DialogSlicer.updateCallback === "function") {
       DialogSlicer.updateCallback(newState);
@@ -85,7 +91,9 @@ export default class DialogSlicer extends React.Component<DialogSlicerProps, Dia
           textDecorationLine: (this.state.isHeaderUnderline) ? 'underline' : 'none', 
           color: this.state.fontHeaderColor, 
           backgroundColor: this.state.backgroundHeaderColor
-        }}>{this.state.titleText}</h3>
+        }}>
+          {this.state.titleText}
+        </h3>
         <div className="input-container" onClick={this.props.onDialogOpen}>
           <p className="selected-text" style={{
             fontFamily:this.state.fontValueFamily, 
