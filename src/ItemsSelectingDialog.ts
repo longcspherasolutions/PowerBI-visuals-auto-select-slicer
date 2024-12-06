@@ -4,7 +4,6 @@ import DialogAction = powerbi.DialogAction;
 import IDialogHost = powerbi.extensibility.visual.IDialogHost;
 import PrimitiveValue = powerbi.PrimitiveValue;
 import { formattingValueInit } from "./settings";
-// React imports as an example
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import ItemsSelectingModal, {ItemsSelectingModalProps} from "./ItemsSelectingModal";
@@ -21,10 +20,15 @@ export type ItemsSelectingDialogResult = {
   selectedItems: PrimitiveValue[];
 }
 
+/**
+ * Dialog class implementation.
+ * Reference: https://learn.microsoft.com/en-us/power-bi/developer/visuals/create-display-dialog-box
+ */
 export default class ItemsSelectingDialog {
   static id = "ItemsSelectingDialog";
   private host: IDialogHost;
   public state: ItemsSelectingDialogInitialState;
+
   constructor(options: DialogConstructorOptions, initialState: ItemsSelectingDialogInitialState) {
     this.host = options.host;
     this.state = initialState;

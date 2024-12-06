@@ -13,6 +13,9 @@ export type ItemsSelectingModalProps = {
   formatValues: formattingValueInit;
 }
 
+/**
+ * Component for popup dialog
+ */
 function ItemsSelectingModal({ data, selectedItems, maxSelection, isDefaultSelected, onChange, formatValues }: ItemsSelectingModalProps) {
   const isMultiple = maxSelection > 1;
   const [selectedOptions, setSelectedOptions] = useState<PrimitiveValue[]>(selectedItems);
@@ -24,6 +27,11 @@ function ItemsSelectingModal({ data, selectedItems, maxSelection, isDefaultSelec
       name: "item"
     };
 
+  /**
+   * Update selected options user click on an item
+   * @param index Index that user clicked
+   * @returns A change event handler for that index
+   */
   const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     // remove or add clicked option
     const option = data[index];
@@ -45,6 +53,8 @@ function ItemsSelectingModal({ data, selectedItems, maxSelection, isDefaultSelec
     }
 
     setSelectedOptions(newSelectedOptions);
+
+    // notify parent about the change
     onChange(newSelectedOptions);
   }
 
